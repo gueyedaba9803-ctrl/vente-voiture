@@ -499,23 +499,83 @@ function openAdminPanel() {
 function closeAdminPanel() {
     document.getElementById('admin-overlay').style.display = 'none';
     document.getElementById('admin-panel').style.display = 'none';
-    // Cacher le bouton Admin dès qu'on ferme le panneau
     document.getElementById('admin-toggle-btn').style.display = 'none';
 }
 function toggleAdmin() { openAdminPanel(); }
 
-// Écouter la frappe du mot de passe "karim24" n'importe où sur la page
+// ── Accès clavier (PC) — taper "karim24" ──
 document.addEventListener('keydown', e => {
-    // Ne pas capturer si on est dans un input/textarea
     if (['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName)) return;
     _adminTyped += e.key;
     if (_adminTyped.length > 8) _adminTyped = _adminTyped.slice(-8);
     if (_adminTyped === 'karim24') {
         _adminTyped = '';
-        document.getElementById('admin-toggle-btn').style.display = 'block';
         openAdminPanel();
     }
 });
+
+// ── Accès mobile — appuyer 5x rapidement sur le logo en bas de page ──
+let _tapCount = 0, _tapTimer = null;
+function _secretTap() {
+    _tapCount++;
+    clearTimeout(_tapTimer);
+    _tapTimer = setTimeout(() => { _tapCount = 0; }, 1500);
+    if (_tapCount >= 5) {
+        _tapCount = 0;
+        clearTimeout(_tapTimer);
+        showAdminPasswordPrompt();
+    }
+}
+
+// Attacher le tap secret au logo footer et au copyright (zones discrètes)
+document.addEventListener('DOMContentLoaded', () => {
+    const targets = [document.querySelector('.ft-copy'), document.querySelector('.ft-logo'), document.querySelector('.ft-axa')];
+    targets.forEach(el => { if (el) el.addEventListener('click', _secretTap); });
+});
+
+// ── Modal mot de passe mobile ──
+function showAdminPasswordPrompt() {
+    // Créer le modal de mot de passe s'il n'existe pas
+    if (!document.getElementById('admin-pwd-modal')) {
+        const m = document.createElement('div');
+        m.id = 'admin-pwd-modal';
+        m.style.cssText = 'display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:99999;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px)';
+        m.innerHTML = `
+          <div style="background:#0a0a14;border:1px solid #1e1e3a;border-radius:20px;padding:32px 28px;width:min(90vw,340px);text-align:center;box-shadow:0 30px 80px rgba(0,0,0,.9)">
+            <div style="font-size:36px;margin-bottom:12px">🔐</div>
+            <div style="font-size:16px;font-weight:800;color:#fff;margin-bottom:6px">Accès Admin</div>
+            <div style="font-size:12px;color:#555;margin-bottom:22px">Entrez le mot de passe</div>
+            <input type="password" id="admin-pwd-input" placeholder="Mot de passe..."
+              style="width:100%;padding:13px 16px;background:#111;border:1px solid #2a2a4a;border-radius:12px;color:#fff;font-size:16px;outline:none;text-align:center;letter-spacing:3px;margin-bottom:14px"
+              onkeydown="if(event.key==='Enter')checkAdminPwd()">
+            <div id="admin-pwd-error" style="color:#ef4444;font-size:12px;margin-bottom:10px;display:none">❌ Mot de passe incorrect</div>
+            <button onclick="checkAdminPwd()" style="width:100%;padding:13px;background:linear-gradient(135deg,#f26522,#ff8340);color:#fff;border:none;border-radius:12px;font-size:14px;font-weight:800;cursor:pointer;margin-bottom:10px">Entrer</button>
+            <button onclick="document.getElementById('admin-pwd-modal').style.display='none'" style="width:100%;padding:10px;background:transparent;color:#555;border:1px solid #222;border-radius:12px;font-size:13px;cursor:pointer">Annuler</button>
+          </div>`;
+        document.body.appendChild(m);
+    }
+    const modal = document.getElementById('admin-pwd-modal');
+    modal.style.display = 'flex';
+    setTimeout(() => {
+        const input = document.getElementById('admin-pwd-input');
+        if (input) { input.value = ''; input.focus(); }
+    }, 100);
+}
+
+function checkAdminPwd() {
+    const val = (document.getElementById('admin-pwd-input').value || '').trim();
+    if (val === 'karim24') {
+        document.getElementById('admin-pwd-modal').style.display = 'none';
+        openAdminPanel();
+    } else {
+        const err = document.getElementById('admin-pwd-error');
+        err.style.display = 'block';
+        const input = document.getElementById('admin-pwd-input');
+        input.value = '';
+        input.style.borderColor = '#ef4444';
+        setTimeout(() => { err.style.display = 'none'; input.style.borderColor = '#2a2a4a'; }, 2000);
+    }
+}
 
 // ── Onglets ──
 function adminTab(tab) {
