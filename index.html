@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Karim Automobile — Vente · Location · Renouvellement Assurance AXA</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- SCROLL PROGRESS -->
+<div id="scroll-progress"></div>
+
+<!-- CURSOR PERSONNALISÉ -->
+<div class="cursor-dot" id="cursorDot"></div>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="ld-logo">Karim <span>Automobile</span><div class="ld-sub">Vente · Location · Assurance AXA</div></div>
+  <div class="ld-track"><div class="ld-bar"></div></div>
+</div>
+
+<!-- WhatsApp Flottant -->
+<a href="https://wa.me/772984213" target="_blank" class="wa-float" title="Contacter Karim sur WhatsApp">💬</a>
+
+<!-- ════════ MODAL DÉTAIL VÉHICULE ════════ -->
+<div class="modal-overlay" id="carModal" onclick="closeModalOutside(event)">
+  <div class="modal" id="modalBox">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-img">
+      <img id="m-img" src="" alt="">
+      <div class="modal-img-overlay"></div>
+      <span class="modal-badge-pos ctag" id="m-badge"></span>
+    </div>
+    <div class="modal-body">
+      <div class="modal-header">
+        <div>
+          <div class="modal-maker" id="m-maker"></div>
+          <div class="modal-name" id="m-name"></div>
+        </div>
+        <div class="modal-price-block">
+          <div class="modal-price" id="m-price"></div>
+          <div class="modal-price-label" id="m-plabel"></div>
+        </div>
+      </div>
+      <div class="modal-specs" id="m-specs"></div>
+      <div class="modal-desc" id="m-desc"></div>
+      <div style="font-size:13px;font-weight:700;color:var(--blue);margin-bottom:12px;letter-spacing:.5px;text-transform:uppercase;">✅ Équipements & Options</div>
+      <div class="modal-opts" id="m-opts"></div>
+      <div id="m-gallery-btn-wrap" style="display:none;margin-bottom:12px">
+        <button class="modal-wa-btn" style="background:linear-gradient(135deg,#1a1a2e,#16213e);font-size:13px" onclick="openGalleryFromModal()">📷 Voir toutes les photos</button>
+      </div>
+      <div class="modal-actions">
+        <button class="modal-wa-btn" onclick="reserverWA()">💬 Réserver sur WhatsApp</button>
+        <a href="tel:+772984213" class="modal-call-btn">📞 Appeler</a>
+      </div>
+      <div style="text-align:center;font-size:11px;color:var(--grey);margin-top:10px">Message envoyé au <strong>+221 77 298 42 13</strong></div>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo">Karim <span>Automobile</span><small>Vente · Location · AXA</small></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#fleet">Véhicules</a></li>
+    <li><a href="#assurance">Assurance AXA</a></li>
+    <li><a href="#avis">Avis</a></li>
+    <li><a href="#contact" class="nav-cta">💬 WhatsApp</a></li>
+  </ul>
+  <div class="ham" id="ham" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+<div class="mob-menu" id="mobMenu" style="display:none">
+  <a href="#services" onclick="closeMenu()">Services</a>
+  <a href="#fleet" onclick="closeMenu()">Véhicules</a>
+  <a href="#assurance" onclick="closeMenu()">Assurance AXA</a>
+  <a href="#avis" onclick="closeMenu()">Avis Clients</a>
+  <a href="#contact" onclick="closeMenu()">💬 Nous Contacter sur WhatsApp →</a>
+</div>
+
+<!-- ACCUEIL -->
+<section class="hero" id="home">
+
+  <!-- Particules canvas -->
+  <canvas id="hero-particles"></canvas>
+
+  <!-- Ligne de scan -->
+  <div class="h-scanline"></div>
+
+  <!-- Fond photo plein écran -->
+  <div class="hero-bg">
+    <img class="hbg-slide active" src="images/image12.jpg" alt="Mercedes-AMG GLE">
+    <img class="hbg-slide" src="images/image7.jpg" alt="Range Rover Evoque">
+    <img class="hbg-slide" src="images/image8.jpg" alt="Toyota 4Runner">
+    <img class="hbg-slide" src="images/image1.jpg" alt="Toyota RAV4">
+    <div class="hero-overlay"></div>
+  </div>
+
+  <!-- Ligne déco verticale gauche -->
+  <div class="h-vline"></div>
+
+  <!-- Numéro déco -->
+  <div class="h-bignum" id="h-bignum">01</div>
+
+  <!-- CONTENU -->
+  <div class="h-body">
+
+    <!-- Colonne texte -->
+    <div class="h-left">
+
+      <div class="h-eyebrow">
+        <span class="h-dot-live"></span>
+        Concessionnaire & Partenaire AXA Officiel · Mbour
+      </div>
+
+      <h1 class="h-title">
+        <span class="h-t1">VOTRE</span>
+        <span class="h-t2" data-text="AUTO IDÉALE">AUTO <em>IDÉALE</em></span>
+        <span class="h-t3">vous attend ici</span>
+      </h1>
+
+      <p class="h-desc">Achetez, louez ou renouvelez votre assurance AXA — tout sous un même toit, avec rapidité et professionnalisme.</p>
+
+      <div class="h-services-row">
+        <div class="h-srv"><span>🚗</span> Vente</div>
+        <div class="h-srv-sep"></div>
+        <div class="h-srv"><span>🗓️</span> Location</div>
+        <div class="h-srv-sep"></div>
+        <div class="h-srv"><span>🛡️</span> Assurance AXA</div>
+      </div>
+
+      <div class="h-ctas">
+        <button class="h-btn-primary" onclick="goto('fleet')">Voir les Véhicules →</button>
+        <button class="h-btn-wa" onclick="window.open('https://wa.me/772984213?text=Bonjour Karim Automobile ! Je souhaite des renseignements.','_blank')">💬 WhatsApp</button>
+      </div>
+
+      <div class="h-trust">
+        <div class="h-ti"><strong>4.9 ★</strong><span>Avis clients</span></div>
+        <div class="h-ti"><strong>&lt;30min</strong><span>Réponse</span></div>
+        <div class="h-ti"><strong>AXA ✓</strong><span>Certifié</span></div>
+      </div>
+
+    </div>
+
+    <!-- Colonne image / carousel -->
+    <div class="h-right">
+      <div class="h-frame">
+        <img class="hc-slide active" src="images/image12.jpg" alt="Mercedes-AMG GLE 53">
+        <img class="hc-slide" src="images/image7.jpg" alt="Range Rover Evoque">
+        <img class="hc-slide" src="images/image8.jpg" alt="Toyota 4Runner">
+        <img class="hc-slide" src="images/image1.jpg" alt="Toyota RAV4">
+
+        <!-- Étiquette voiture -->
+        <div class="h-car-tag">
+          <div class="h-car-tag-name" id="hc-label">Mercedes-AMG GLE 53</div>
+          <div class="h-car-tag-sub">Disponible · Contactez-nous</div>
+        </div>
+
+        <!-- Navigation carousel -->
+        <div class="h-nav">
+          <button class="h-nav-btn" onclick="goSlide(slideIdx-1)">&#8592;</button>
+          <div class="h-nav-dots">
+            <span class="hc-dot active" onclick="goSlide(0)"></span>
+            <span class="hc-dot" onclick="goSlide(1)"></span>
+            <span class="hc-dot" onclick="goSlide(2)"></span>
+            <span class="hc-dot" onclick="goSlide(3)"></span>
+          </div>
+          <button class="h-nav-btn" onclick="goSlide(slideIdx+1)">&#8594;</button>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- STATS BAR -->
+  <div class="hero-stats">
+    <div class="hstat"><span class="hstat-n" data-to="120">0</span><span class="hstat-l">Véhicules disponibles</span></div>
+    <div class="hstat"><span class="hstat-n" data-to="10">0</span><span class="hstat-l">Ans d'expérience</span></div>
+    <div class="hstat"><span class="hstat-n" data-to="2400">0</span><span class="hstat-l">Assurances renouvelées</span></div>
+    <div class="hstat"><span class="hstat-n" data-to="98">0</span><span class="hstat-l">% Clients satisfaits</span></div>
+  </div>
+
+</section>
+
+<!-- SERVICES -->
+<section class="svc-sec" id="services">
+  <div class="wrap">
+    <div class="sr"><div class="stag">Karim Automobile</div><h2 class="stitle">Nos <span class="r">3 Services</span></h2><p class="ssub">Vente, location et renouvellement d'assurance AXA — tout chez Karim Automobile.</p></div>
+    <div class="svc-grid">
+      <div class="svc s1 sr" style="transition-delay:.1s"><span class="svc-n">01</span><div class="svc-ico">🚗</div><h3>Vente de Véhicules</h3><p>Berlines, SUV, citadines. Neufs et occasions vérifiées avec garantie. Financement disponible.</p><a href="#fleet" class="svc-lnk">Explorer la flotte →</a></div>
+      <div class="svc s2 sr" style="transition-delay:.2s"><span class="svc-n">02</span><div class="svc-ico">🗓️</div><h3>Location Courte & Longue Durée</h3><p>Kilométrage illimité, assurance AXA incluse. Livraison à domicile disponible.</p><a href="#contact" class="svc-lnk">Réserver →</a></div>
+      <div class="svc s3 sr" style="transition-delay:.3s"><span class="svc-n">03</span><div class="svc-ico">🛡️</div><h3>Renouvellement Assurance AXA</h3><p>Votre assurance a expiré ? Envoyez-nous votre carte grise — nous gérons tout sous 24h.</p><a href="#assurance" class="svc-lnk">Envoyer ma carte grise →</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- FLEET avec vrais photos et boutons Détails + Réserver -->
+<section class="fleet-sec" id="fleet">
+  <div class="wrap">
+    <div class="fleet-head sr">
+      <div><div class="stag">Notre Catalogue</div><h2 class="stitle">Nos <span class="r">Véhicules</span></h2></div>
+      <div class="tabs">
+        <button class="tab on" onclick="filter('all',this)">Tous</button>
+        <button class="tab" onclick="filter('vente',this)">À Vendre</button>
+        <button class="tab" onclick="filter('location',this)">À Louer</button>
+        <button class="tab" onclick="filter('suv',this)">SUV</button>
+        <button class="tab" onclick="filter('citadine',this)">Citadines</button>
+      </div>
+    </div>
+    <div class="cgrid" id="carGrid">
+
+      <!-- ─── MERCEDES ─── -->
+      <div class="cc" data-cat="vente"
+        data-img="images/image12.jpg" data-maker="Mercedes-Benz" data-name="AMG GLE 53 Coupé 2021"
+        data-price="64 000 000 FCFA" data-ptype="Prix de vente"
+        data-badge="Prestige" data-bc="t-p"
+        data-s1="435 ch" data-s1l="Puissance" data-s1i="⚡"
+        data-s2="4.9s" data-s2l="0–100 km/h" data-s2i="🏁"
+        data-s3="4MATIC+" data-s3l="Transmission" data-s3i="🔄"
+        data-s4="Hybride" data-s4l="Motorisation" data-s4i="🌿"
+        data-desc="Le Mercedes-AMG GLE 53 Coupé allie puissance et élégance. Moteur 6 cylindres turbo, traction intégrale 4MATIC+, finition premium irréprochable. Une voiture d'exception."
+        data-opts="Toit ouvrant panoramique,Jantes AMG 22 pouces,Sièges chauffants & ventilés,Système MBUX,Caméra 360°,Park Assist,Suspension pneumatique,64 couleurs ambiance">
+        <div class="cc-img"><img src="images/image12.jpg" alt="Mercedes AMG GLE"><span class="ctag t-p">Prestige</span></div>
+        <div class="cc-body">
+          <div class="cc-mk">Mercedes-Benz</div><div class="cc-mo">AMG GLE 53 Coupé</div>
+          <div class="pills"><span class="pill">435 ch</span><span class="pill">4MATIC+</span><span class="pill">Hybride</span></div>
+          <div class="cc-ft"><div class="cc-price">64 000 000 FCFA</div>
+            <div class="cc-actions">
+              <button class="cc-btn-detail" onclick="openModal(this.closest('.cc'))">🔍 Détails</button>
+              <button class="cc-btn-res" onclick="reserver('Mercedes-AMG GLE 53 Coupé','64 000 000 FCFA')">💬 Réserver</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── RANGE ROVER ─── -->
+      <div class="cc" data-cat="vente suv"
+        data-img="images/image7.jpg" data-maker="Range Rover" data-name="Evoque Dynamic 2023"
+        data-price="47 000 000 FCFA" data-ptype="Prix de vente"
+        data-badge="Vente" data-bc="t-s"
+        data-s1="300 ch" data-s1l="Puissance" data-s1i="⚡"
+        data-s2="6.3s" data-s2l="0–100 km/h" data-s2i="🏁"
+        data-s3="AWD" data-s3l="Transmission" data-s3i="🔄"
+        data-s4="2023" data-s4l="Année" data-s4i="📅"
+        data-desc="Range Rover Evoque Dynamic 2023 en bleu exclusif. SUV compact premium alliant design audacieux, technologie avancée et traction intégrale intelligente. Parfait ville & aventure."
+        data-opts="Couleur bleu exclusif,Jantes noires 20 pouces,Toit ouvrant panoramique,Sièges cuir Windsor,Head-up Display,Meridian Sound,Terrain Response 2,Caméra HD">
+        <div class="cc-img"><img src="images/image7.jpg" alt="Range Rover Evoque"><span class="ctag t-s">Vente</span></div>
+        <div class="cc-body">
+          <div class="cc-mk">Range Rover</div><div class="cc-mo">Evoque Dynamic 2023</div>
+          <div class="pills"><span class="pill">300 ch</span><span class="pill">AWD</span><span class="pill">2023</span></div>
+          <div class="cc-ft"><div class="cc-price">47 000 000 FCFA</div>
+            <div class="cc-actions">
+              <button class="cc-btn-detail" onclick="openModal(this.closest('.cc'))">🔍 Détails</button>
+              <button class="cc-btn-res" onclick="reserver('Range Rover Evoque Dynamic 2023','47 000 000 FCFA')">💬 Réserver</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── RAV4 2014 ─── -->
+      <div class="cc" data-cat="vente suv"
+        data-img="images/image1.jpg" data-maker="Toyota" data-name="RAV4 Limited 2014"
+        data-price="9 500 000 FCFA" data-ptype="Prix de vente"
+        data-badge="Promo" data-bc="t-promo"
+        data-s1="176 ch" data-s1l="Puissance" data-s1i="⚡"
+        data-s2="4×4" data-s2l="Transmission" data-s2i="🔄"
+        data-s3="Auto" data-s3l="Boîte" data-s3i="⚙️"
+        data-s4="2014" data-s4l="Année" data-s4i="📅"
+        data-desc="Toyota RAV4 Limited 2014, parfait état, accident free, faible kilométrage. Importé & dédouané. Démarrage sans clé, hayon électrique. Excellent rapport qualité/prix."
+        data-opts="Keyless Entry & Start,Hayon électrique,Régulateur de vitesse,Climatisation bi-zone,Caméra de recul,Jantes alliage 18'',Sièges cuir chauffants,GPS Bluetooth">
+        <div class="cc-img"><img src="images/image1.jpg" alt="Toyota RAV4 2014"><span class="ctag t-promo">Promo</span></div>
+        <div class="cc-body">
+          <div class="cc-mk">Toyota</div><div class="cc-mo">RAV4 Limited 2014</div>
+          <div class="pills"><span class="pill">176 ch</span><span class="pill">4×4</span><span class="pill">Keyless</span></div>
+          <div class="cc-ft"><div class="cc-price">9 500 000 FCFA</div>
+            <div class="cc-actions">
+              <button class="cc-btn-detail" onclick="openModal(this.closest('.cc'))">🔍 Détails</button>
+              <button class="cc-btn-res" onclick="reserver('Toyota RAV4 Limited 2014','9 500 000 FCFA')">💬 Réserver</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── RAV4 LOCATION ─── -->
+      <div class="cc" data-cat="location suv"
+        data-img="images/image4.jpg" data-maker="Toyota" data-name="RAV4 2015 — Location"
+        data-price="42 000 FCFA" data-ptype="par jour"
+        data-badge="Location" data-bc="t-l"
+        data-s1="151 ch" data-s1l="Puissance" data-s1i="⚡"
+        data-s2="5 places" data-s2l="Capacité" data-s2i="👥"
+        data-s3="Auto" data-s3l="Boîte" data-s3i="⚙️"
+        data-s4="AXA inclus" data-s4l="Assurance" data-s4i="🛡️"
+        data-desc="Toyota RAV4 2015 disponible à la location. Fiable, spacieux, confortable. Idéal voyages famille ou déplacements pro. Assurance AXA tous risques et km illimités inclus."
+        data-opts="Assurance AXA incluse,Km illimité,GPS intégré,Climatisation,Bluetooth,Siège bébé dispo,Livraison possible,Assistance 24/7">
+        <div class="cc-img"><img src="images/image4.jpg" alt="Toyota RAV4 2015"><span class="ctag t-l">Location</span></div>
+        <div class="cc-body">
+          <div class="cc-mk">Toyota</div><div class="cc-mo">RAV4 2015</div>
+          <div class="pills"><span class="pill">151 ch</span><span class="pill">5 places</span><span class="pill">Auto</span></div>
+          <div class="cc-ft"><div class="cc-price">42 000 FCFA <small>/jour</small></div>
+            <div class="cc-actions">
+              <button class="cc-btn-detail" onclick="openModal(this.closest('.cc'))">🔍 Détails</button>
+              <button class="cc-btn-res" onclick="reserver('Toyota RAV4 2015 (location)','42 000 FCFA/jour')">💬 Réserver</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── 4RUNNER ─── -->
+      <div class="cc" data-cat="vente suv"
+        data-img="images/image8.jpg" data-maker="Toyota" data-name="4Runner Limited"
+        data-price="25 000 000 FCFA" data-ptype="Prix de vente"
+        data-badge="Vente" data-bc="t-s"
+        data-s1="270 ch" data-s1l="Puissance" data-s1i="⚡"
+        data-s2="4×4" data-s2l="Transmission" data-s2i="🔄"
+        data-s3="7 places" data-s3l="Capacité" data-s3i="👥"
+        data-s4="V6 4.0L" data-s4l="Moteur" data-s4i="🔧"
+        data-desc="Toyota 4Runner Limited, le SUV robuste par excellence. V6 4.0L naturellement aspiré, 4×4 permanente, carrosserie sur châssis. Parfait pour les familles et les terrains difficiles."
+        data-opts="7 places confort,4×4 permanente,Toit ouvrant,Sièges cuir chauffants,Caméra 360°,Jantes 20'',Audio JBL,Hayon motorisé">
+        <div class="cc-img"><img src="images/image8.jpg" alt="Toyota 4Runner"><span class="ctag t-s">Vente</span></div>
+        <div class="cc-body">
+          <div class="cc-mk">Toyota</div><div class="cc-mo">4Runner Limited</div>
+          <div class="pills"><span class="pill">270 ch</span><span class="pill">4×4</span><span class="pill">7 places</span></div>
+          <div class="cc-ft"><div class="cc-price">25 000 000 FCFA</div>
+            <div class="cc-actions">
+              <button class="cc-btn-detail" onclick="openModal(this.closest('.cc'))">🔍 Détails</button>
+              <button class="cc-btn-res" onclick="reserver('Toyota 4Runner Limited','25 000 000 FCFA')">💬 Réserver</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── C5 AIRCROSS ─── -->
+      <div class="cc" data-cat="vente suv"
+        data-img="images/image10.jpg" data-maker="Citroën" data-name="C5 Aircross 2022"
+        data-price="23 000 000 FCFA" data-ptype="Prix de vente"
+        data-badge="Neuf" data-bc="t-e"
+        data-s1="180 ch" data-s1l="Puissance" data-s1i="⚡"
+        data-s2="Hybride" data-s2l="Motorisation" data-s2i="🌿"
+        data-s3="SUV" data-s3l="Type" data-s3i="🚙"
+        data-s4="2022" data-s4l="Année" data-s4i="📅"
+        data-desc="Citroën C5 Aircross 2022 hybride rechargeable. Design moderne, suspension hydraulique progressive, intérieur spacieux et technologique. SUV français haut de gamme."
+        data-opts="Hybride rechargeable,Suspension hydraulique,Toit pano,Sièges Advanced Comfort,Écran 12 pouces,Caméra 360°,Aide stationnement,Charge rapide">
+        <div class="cc-img"><img src="images/image10.jpg" alt="Citroën C5 Aircross"><span class="ctag t-e">Neuf</span></div>
+        <div class="cc-body">
+          <div class="cc-mk">Citroën</div><div class="cc-mo">C5 Aircross 2022</div>
+          <div class="pills"><span class="pill">180 ch</span><span class="pill">Hybride</span><span class="pill">SUV</span></div>
+          <div class="cc-ft"><div class="cc-price">23 000 000 FCFA</div>
+            <div class="cc-actions">
+              <button class="cc-btn-detail" onclick="openModal(this.closest('.cc'))">🔍 Détails</button>
+              <button class="cc-btn-res" onclick="reserver('Citroën C5 Aircross 2022','23 000 000 FCFA')">💬 Réserver</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── BERLINGO ─── -->
+      <div class="cc" data-cat="location"
+        data-img="images/image11.jpg" data-maker="Citroën" data-name="Berlingo Multispace — Location"
+        data-price="30 000 FCFA" data-ptype="par jour"
+        data-badge="Location" data-bc="t-l"
+        data-s1="120 ch" data-s1l="Puissance" data-s1i="⚡"
+        data-s2="7 places" data-s2l="Capacité" data-s2i="👥"
+        data-s3="Diesel" data-s3l="Carburant" data-s3i="⛽"
+        data-s4="AXA inclus" data-s4l="Assurance" data-s4i="🛡️"
+        data-desc="Citroën Berlingo Multispace, utilitaire familial idéal. 7 places modulables, grand coffre 3000L. Parfait déménagements, transports équipements ou sorties familiales. AXA inclus."
+        data-opts="7 places modulables,Grand coffre 3000L,Assurance AXA incluse,Km illimité,Climatisation,Bluetooth,Livraison à domicile,Assistance 24/7">
+        <div class="cc-img"><img src="images/image11.jpg" alt="Citroën Berlingo"><span class="ctag t-l">Location</span></div>
+        <div class="cc-body">
+          <div class="cc-mk">Citroën</div><div class="cc-mo">Berlingo Multispace</div>
+          <div class="pills"><span class="pill">120 ch</span><span class="pill">7 places</span><span class="pill">Diesel</span></div>
+          <div class="cc-ft"><div class="cc-price">30 000 FCFA <small>/jour</small></div>
+            <div class="cc-actions">
+              <button class="cc-btn-detail" onclick="openModal(this.closest('.cc'))">🔍 Détails</button>
+              <button class="cc-btn-res" onclick="reserver('Citroën Berlingo (location)','30 000 FCFA/jour')">💬 Réserver</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── SANDERO ─── -->
+      <div class="cc" data-cat="vente citadine"
+        data-img="images/image9.jpg" data-maker="Dacia" data-name="Sandero Stepway"
+        data-price="5 800 000 FCFA" data-ptype="Prix de vente"
+        data-badge="Bon Plan" data-bc="t-promo"
+        data-s1="90 ch" data-s1l="Puissance" data-s1i="⚡"
+        data-s2="GPL" data-s2l="Carburant" data-s2i="⛽"
+        data-s3="5 portes" data-s3l="Carrosserie" data-s3i="🚗"
+        data-s4="120g/km" data-s4l="CO₂" data-s4i="🌿"
+        data-desc="Dacia Sandero Stepway, SUV urbain accessible. Garde au sol surélevée, barres de toit, style crossover. Look aventurier au meilleur prix du marché. Double motorisation GPL/Essence."
+        data-opts="GPL/Essence,Barres de toit,Garde au sol +,Climatisation,Bluetooth,Radars recul,Jantes 16 pouces,Direction assistée">
+        <div class="cc-img"><img src="images/image9.jpg" alt="Dacia Sandero"><span class="ctag t-promo">Bon Plan</span></div>
+        <div class="cc-body">
+          <div class="cc-mk">Dacia</div><div class="cc-mo">Sandero Stepway</div>
+          <div class="pills"><span class="pill">90 ch</span><span class="pill">GPL</span><span class="pill">5 portes</span></div>
+          <div class="cc-ft"><div class="cc-price">5 800 000 FCFA</div>
+            <div class="cc-actions">
+              <button class="cc-btn-detail" onclick="openModal(this.closest('.cc'))">🔍 Détails</button>
+              <button class="cc-btn-res" onclick="reserver('Dacia Sandero Stepway','5 800 000 FCFA')">💬 Réserver</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── YARIS VIOLETTE ─── -->
+      <div class="cc" data-cat="vente citadine"
+        data-img="images/image3.jpg" data-maker="Toyota" data-name="Yaris 5 Portes"
+        data-price="5 000 000 FCFA" data-ptype="Prix de vente"
+        data-badge="Vente" data-bc="t-s"
+        data-s1="99 ch" data-s1l="Puissance" data-s1i="⚡"
+        data-s2="Essence" data-s2l="Carburant" data-s2i="⛽"
+        data-s3="5 portes" data-s3l="Carrosserie" data-s3i="🚗"
+        data-s4="Climatisée" data-s4l="Confort" data-s4i="❄️"
+        data-desc="Toyota Yaris 5 portes en couleur violette unique. Citadine fiable par excellence, économique, idéale pour la ville. Entretien Toyota suivi, faible kilométrage, très bon état général."
+        data-opts="Couleur violette exclusive,Climatisation,Direction assistée,Bluetooth,Vitres électriques,Fermeture centralisée,Jantes alliage,Entretien à jour">
+        <div class="cc-img"><img src="images/image3.jpg" alt="Toyota Yaris violette"><span class="ctag t-s">Vente</span></div>
+        <div class="cc-body">
+          <div class="cc-mk">Toyota</div><div class="cc-mo">Yaris 5 Portes</div>
+          <div class="pills"><span class="pill">99 ch</span><span class="pill">Essence</span><span class="pill">Climatisée</span></div>
+          <div class="cc-ft"><div class="cc-price">5 000 000 FCFA</div>
+            <div class="cc-actions">
+              <button class="cc-btn-detail" onclick="openModal(this.closest('.cc'))">🔍 Détails</button>
+              <button class="cc-btn-res" onclick="reserver('Toyota Yaris 5 Portes violette','5 000 000 FCFA')">💬 Réserver</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── YARIS SILVER ─── -->
+      <div class="cc" data-cat="location citadine"
+        data-img="images/image6.jpg" data-maker="Toyota" data-name="Yaris RF Edition — Location"
+        data-price="23 000 FCFA" data-ptype="par jour"
+        data-badge="Location" data-bc="t-l"
+        data-s1="86 ch" data-s1l="Puissance" data-s1i="⚡"
+        data-s2="5 portes" data-s2l="Carrosserie" data-s2i="🚗"
+        data-s3="GPS" data-s3l="Navigation" data-s3i="🗺️"
+        data-s4="AXA inclus" data-s4l="Assurance" data-s4i="🛡️"
+        data-desc="Toyota Yaris RF Edition à la location. Citadine fiable et économique, parfaite pour se déplacer en ville. Assurance AXA tous risques incluse dans le tarif journalier. Km illimités."
+        data-opts="AXA tous risques incluse,Km illimité,GPS intégré,Climatisation,Bluetooth,Plein inclus,Livraison possible,Assistance 24/7">
+        <div class="cc-img"><img src="images/image6.jpg" alt="Toyota Yaris Silver"><span class="ctag t-l">Location</span></div>
+        <div class="cc-body">
+          <div class="cc-mk">Toyota</div><div class="cc-mo">Yaris RF Edition</div>
+          <div class="pills"><span class="pill">86 ch</span><span class="pill">5 portes</span><span class="pill">GPS</span></div>
+          <div class="cc-ft"><div class="cc-price">23 000 FCFA <small>/jour</small></div>
+            <div class="cc-actions">
+              <button class="cc-btn-detail" onclick="openModal(this.closest('.cc'))">🔍 Détails</button>
+              <button class="cc-btn-res" onclick="reserver('Toyota Yaris RF Edition (location)','23 000 FCFA/jour')">💬 Réserver</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── YARIS ROSE ─── -->
+      <div class="cc" data-cat="location citadine"
+        data-img="images/image2.jpg" data-maker="Toyota" data-name="Yaris XP90 — Location"
+        data-price="21 000 FCFA" data-ptype="par jour"
+        data-badge="Location" data-bc="t-l"
+        data-s1="87 ch" data-s1l="Puissance" data-s1i="⚡"
+        data-s2="Essence" data-s2l="Carburant" data-s2i="⛽"
+        data-s3="Éco" data-s3l="Consommation" data-s3i="🌿"
+        data-s4="AXA inclus" data-s4l="Assurance" data-s4i="🛡️"
+        data-desc="Toyota Yaris XP90 rose poudré, légère et économique. Parfaite pour les trajets urbains quotidiens. Très faible consommation, facile à garer. Assurance AXA incluse dans le tarif."
+        data-opts="AXA incluse,Km illimité,Climatisation,Bluetooth,Faible conso,Facile à garer,Plein inclus,Assistance 24/7">
+        <div class="cc-img"><img src="images/image2.jpg" alt="Toyota Yaris Rose"><span class="ctag t-l">Location</span></div>
+        <div class="cc-body">
+          <div class="cc-mk">Toyota</div><div class="cc-mo">Yaris XP90</div>
+          <div class="pills"><span class="pill">87 ch</span><span class="pill">Essence</span><span class="pill">Éco</span></div>
+          <div class="cc-ft"><div class="cc-price">21 000 FCFA <small>/jour</small></div>
+            <div class="cc-actions">
+              <button class="cc-btn-detail" onclick="openModal(this.closest('.cc'))">🔍 Détails</button>
+              <button class="cc-btn-res" onclick="reserver('Toyota Yaris XP90 rose (location)','21 000 FCFA/jour')">💬 Réserver</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── RAV4 2020 ─── -->
+      <div class="cc" data-cat="vente suv"
+        data-img="images/image5.jpg" data-maker="Toyota" data-name="RAV4 XLE Premium 2020"
+        data-price="19 000 000 FCFA" data-ptype="Prix de vente"
+        data-badge="Vente" data-bc="t-s"
+        data-s1="203 ch" data-s1l="Puissance" data-s1i="⚡"
+        data-s2="Hybride" data-s2l="Motorisation" data-s2i="🌿"
+        data-s3="AWD" data-s3l="Transmission" data-s3i="🔄"
+        data-s4="2020" data-s4l="Année" data-s4i="📅"
+        data-desc="Toyota RAV4 XLE Premium 2020 hybride AWD. Économique, spacieux et très bien équipé. Compromis parfait entre consommation réduite et performances SUV. Carnet entretien à jour."
+        data-opts="Hybride AWD,Toit ouvrant,Sièges chauffants,JBL Premium Audio,Caméra 360°,Blind Spot Monitor,Adaptive Cruise,Carnet complet">
+        <div class="cc-img"><img src="images/image5.jpg" alt="Toyota RAV4 2020"><span class="ctag t-s">Vente</span></div>
+        <div class="cc-body">
+          <div class="cc-mk">Toyota</div><div class="cc-mo">RAV4 XLE Premium 2020</div>
+          <div class="pills"><span class="pill">203 ch</span><span class="pill">Hybride</span><span class="pill">2020</span></div>
+          <div class="cc-ft"><div class="cc-price">19 000 000 FCFA</div>
+            <div class="cc-actions">
+              <button class="cc-btn-detail" onclick="openModal(this.closest('.cc'))">🔍 Détails</button>
+              <button class="cc-btn-res" onclick="reserver('Toyota RAV4 XLE Premium 2020','19 000 000 FCFA')">💬 Réserver</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── MAZDA CX-5 ─── -->
+      <div class="cc" data-cat="vente suv" id="car-mazda-cx5"
+        data-img="images/image13.jpeg" data-maker="Mazda" data-name="CX-5 Full Option 2018"
+        data-price="11 500 000 FCFA" data-ptype="Prix de vente"
+        data-badge="Dédouané" data-bc="t-e"
+        data-s1="2018" data-s1l="Année" data-s1i="📅"
+        data-s2="Essence Auto" data-s2l="Moteur" data-s2i="⚙️"
+        data-s3="117 799 mi" data-s3l="Kilométrage" data-s3i="🛣️"
+        data-s4="Cuir Noir" data-s4l="Intérieur" data-s4i="🪑"
+        data-desc="Mazda CX-5 2018 essence automatique, full option. Déjà dédouanée et prête à immatriculer. Intérieur cuir noir premium, écran tactile, jantes sport. Kilométrage certifié 117 799 miles. En parfait état esthétique et mécanique."
+        data-opts="Intérieur cuir noir,Écran tactile Mazda Connect,Jantes sport noires,Climatisation auto,Caméra de recul,Régulateur de vitesse,Démarrage sans clé,Sièges chauffants,Vitres teintées,Déjà dédouanée"
+        data-gallery="images/image13.jpeg,images/image14.jpeg,images/image15.jpeg,images/image16.jpeg,images/image17.jpeg,images/image19.jpeg,images/image20.jpeg,images/image21.jpeg,images/image22.jpeg">
+        <div class="cc-img" style="position:relative">
+          <img src="images/image13.jpeg" alt="Mazda CX-5 2018">
+          <span class="ctag t-e">Dédouané</span>
+          <span class="gallery-count">📷 9 photos</span>
+        </div>
+        <div class="cc-body">
+          <div class="cc-mk">Mazda</div><div class="cc-mo">CX-5 Full Option 2018</div>
+          <div class="pills"><span class="pill">Essence Auto</span><span class="pill">117k mi</span><span class="pill">Cuir</span></div>
+          <div class="cc-ft"><div class="cc-price">11 500 000 FCFA</div>
+            <div class="cc-actions">
+              <button class="cc-btn-detail" onclick="openModal(this.closest('.cc'))">🔍 Détails & Photos</button>
+              <button class="cc-btn-res" onclick="reserver('Mazda CX-5 Full Option 2018','11 500 000 FCFA')">💬 Réserver</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
+      <!-- ─── TOYOTA HILUX 2020 ─── -->
+      <div class="cc" data-cat="vente suv" id="car-hilux-2020"
+        data-img="images/hilux1.png" data-maker="Toyota" data-name="Hilux 2.7 VVT-i 4×4 2020"
+        data-price="17 000 000 FCFA" data-ptype="Prix de vente"
+        data-badge="Vente" data-bc="t-s"
+        data-s1="2020" data-s1l="Année" data-s1i="📅"
+        data-s2="Gasoil Auto" data-s2l="Moteur" data-s2i="⚙️"
+        data-s3="4×4" data-s3l="Transmission" data-s3i="🔄"
+        data-s4="Climatisée" data-s4l="Confort" data-s4i="❄️"
+        data-desc="Toyota Hilux 2.7 VVT-i 4×4 2020, double cabine, automatique gasoil. Zéro défaut, très propre, climatisée. Idéale pour les terrains difficiles et les longs trajets. Pickup fiable et robuste par excellence."
+        data-opts="Double cabine,4×4 permanente,Boîte automatique,Climatisation,Gasoil,Zéro défaut,Très bon état,Fenêtre arrière coulissante"
+        data-gallery="images/hilux1.png,images/hilux2.jpeg,images/hilux3.jpeg,images/hilux4.jpeg,images/hilux5.jpeg">
+        <div class="cc-img" style="position:relative">
+          <img src="images/hilux1.png" alt="Toyota Hilux 2020">
+          <span class="ctag t-s">Vente</span>
+          <span class="gallery-count">📷 5 photos</span>
+        </div>
+        <div class="cc-body">
+          <div class="cc-mk">Toyota</div><div class="cc-mo">Hilux 4×4 Double Cab 2020</div>
+          <div class="pills"><span class="pill">Gasoil Auto</span><span class="pill">4×4</span><span class="pill">2020</span></div>
+          <div class="cc-ft"><div class="cc-price">17 000 000 FCFA</div>
+            <div class="cc-actions">
+              <button class="cc-btn-detail" onclick="openModal(this.closest('.cc'))">🔍 Détails & Photos</button>
+              <button class="cc-btn-res" onclick="reserver('Toyota Hilux 4×4 Double Cab 2020','17 000 000 FCFA')">💬 Réserver</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /cgrid -->
+  </div>
+</section>
+
+<!-- ════ MODAL GALERIE PHOTOS ════ -->
+<div class="modal-overlay" id="galleryModal" onclick="closeGalleryOutside(event)">
+  <div class="gallery-modal">
+    <button class="modal-close" onclick="closeGallery()">✕</button>
+    <div class="gallery-main">
+      <button class="gal-nav gal-prev" onclick="galNav(-1)">&#8592;</button>
+      <img id="gal-main-img" src="" alt="">
+      <button class="gal-nav gal-next" onclick="galNav(1)">&#8594;</button>
+      <div class="gal-counter" id="gal-counter"></div>
+    </div>
+    <div class="gallery-thumbs" id="gallery-thumbs"></div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     PANNEAU ADMIN COMPLET
+════════════════════════════════════════ -->
+<div id="admin-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:10100;backdrop-filter:blur(4px)" onclick="closeAdminPanel()"></div>
+
+<div id="admin-panel" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#0a0a14;border:1px solid #1e1e3a;border-radius:20px;z-index:10200;width:min(96vw,720px);max-height:90vh;overflow:hidden;flex-direction:column;box-shadow:0 30px 80px rgba(0,0,0,.9)">
+
+  <!-- En-tête Admin -->
+  <div style="background:linear-gradient(135deg,#111124,#1a1a3a);padding:18px 22px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #222244;flex-shrink:0">
+    <div style="display:flex;align-items:center;gap:10px">
+      <div style="background:linear-gradient(135deg,#f26522,#ff8340);width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px">⚙️</div>
+      <div>
+        <div style="font-size:15px;font-weight:800;color:#fff;letter-spacing:.5px">Karim Automobile — Admin</div>
+        <div style="font-size:11px;color:#666">Gestion du catalogue véhicules</div>
+      </div>
+    </div>
+    <button onclick="closeAdminPanel()" style="background:rgba(255,255,255,.07);color:#aaa;border:1px solid #333;border-radius:10px;width:32px;height:32px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center">✕</button>
+  </div>
+
+  <!-- Onglets -->
+  <div style="display:flex;gap:0;border-bottom:1px solid #1e1e3a;flex-shrink:0">
+    <button id="atab-list" onclick="adminTab('list')" style="flex:1;padding:13px;font-size:12px;font-weight:700;letter-spacing:.5px;cursor:pointer;border:none;background:#f26522;color:#fff;transition:.2s">📋 STOCK</button>
+    <button id="atab-add" onclick="adminTab('add')" style="flex:1;padding:13px;font-size:12px;font-weight:700;letter-spacing:.5px;cursor:pointer;border:none;background:#1a1a2e;color:#666;transition:.2s">➕ AJOUTER</button>
+    <button id="atab-edit" onclick="adminTab('edit')" style="flex:1;padding:13px;font-size:12px;font-weight:700;letter-spacing:.5px;cursor:pointer;border:none;background:#1a1a2e;color:#666;transition:.2s" id="atab-edit">✏️ MODIFIER</button>
+  </div>
+
+  <!-- Contenu scrollable -->
+  <div style="overflow-y:auto;flex:1;padding:20px" id="admin-content">
+
+    <!-- ── TAB : LISTE STOCK ── -->
+    <div id="tab-list">
+      <div style="font-size:11px;color:#555;margin-bottom:14px">Gérez la visibilité et le statut de chaque véhicule.</div>
+      <div id="admin-car-list" style="display:flex;flex-direction:column;gap:8px"></div>
+    </div>
+
+    <!-- ── TAB : AJOUTER VOITURE ── -->
+    <div id="tab-add" style="display:none">
+      <div style="font-size:13px;color:#aaa;margin-bottom:18px">Remplissez les informations du nouveau véhicule.</div>
+      <div id="admin-form-add"><!-- généré par JS --></div>
+      <button onclick="submitAddCar()" style="width:100%;margin-top:18px;padding:14px;background:linear-gradient(135deg,#f26522,#ff8340);color:#fff;border:none;border-radius:12px;font-size:14px;font-weight:800;cursor:pointer;letter-spacing:.5px">➕ AJOUTER AU CATALOGUE</button>
+      <div id="add-feedback" style="margin-top:10px;text-align:center;font-size:12px;color:#22c55e;display:none"></div>
+    </div>
+
+    <!-- ── TAB : MODIFIER VOITURE ── -->
+    <div id="tab-edit" style="display:none">
+      <div style="margin-bottom:14px">
+        <label style="font-size:11px;color:#888;display:block;margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px">Choisir le véhicule à modifier</label>
+        <select id="edit-car-select" onchange="loadCarForEdit()" style="width:100%;padding:11px 14px;background:#111;border:1px solid #2a2a4a;border-radius:10px;color:#fff;font-size:13px;outline:none">
+          <option value="">— Sélectionner une voiture —</option>
+        </select>
+      </div>
+      <div id="admin-form-edit"></div>
+      <div id="edit-actions" style="display:none;margin-top:18px;display:none;gap:10px">
+        <button onclick="submitEditCar()" style="flex:1;padding:13px;background:linear-gradient(135deg,#2563eb,#3b82f6);color:#fff;border:none;border-radius:12px;font-size:13px;font-weight:800;cursor:pointer">💾 ENREGISTRER</button>
+        <button onclick="document.getElementById('admin-form-edit').innerHTML='';document.getElementById('edit-car-select').value='';document.getElementById('edit-actions').style.display='none'" style="padding:13px 18px;background:#1a1a2e;color:#888;border:1px solid #333;border-radius:12px;font-size:13px;cursor:pointer">Annuler</button>
+      </div>
+      <div id="edit-feedback" style="margin-top:10px;text-align:center;font-size:12px;color:#22c55e;display:none"></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Bouton flottant Admin -->
+<button onclick="openAdminPanel()" style="display:none;position:fixed;bottom:20px;right:80px;background:linear-gradient(135deg,#111124,#1a1a3a);color:#fff;border:1px solid #333;border-radius:12px;padding:10px 16px;font-size:12px;cursor:pointer;z-index:9998;font-weight:700;box-shadow:0 4px 20px rgba(0,0,0,.5);letter-spacing:.3px" id="admin-toggle-btn">⚙️ Admin</button>
+
+<!-- CONTACT → WHATSAPP -->
+<section class="contact-sec" id="contact">
+  <div class="contact-inner">
+    <div class="contact-left srl">
+      <div class="stag">Contactez-Nous</div>
+      <h2 class="stitle">Réservez sur <span class="r">WhatsApp</span></h2>
+      <p class="ssub">Remplissez le formulaire — vous serez redirigé directement sur WhatsApp et Karim recevra votre message instantanément.</p>
+      <div class="contact-info">
+        <a href="https://wa.me/772984213" target="_blank" class="ci ci-wa">
+          <div class="ci-icon">💬</div>
+          <div><div class="ci-label">WhatsApp — Réponse rapide</div><div class="ci-val">+221 77 298 42 13</div></div>
+        </a>
+        <a href="tel:+772984213" class="ci">
+          <div class="ci-icon">📞</div>
+          <div><div class="ci-label">Appel Direct</div><div class="ci-val">+221 77 298 42 13</div></div>
+        </a>
+        <div class="ci">
+          <div class="ci-icon">🕐</div>
+          <div><div class="ci-label">Horaires</div><div class="ci-val">Lun–Sam : 8h–20h · Dim : 9h–17h</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="srr" style="transition-delay:.2s">
+      <div class="contact-form">
+        <div class="cf-title">💬 Envoyer un Message</div>
+        <div class="frow">
+          <div class="fg"><label>Votre Nom</label><input type="text" id="cf-nom" placeholder="Votre nom complet"></div>
+          <div class="fg"><label>Téléphone</label><input type="tel" id="cf-tel" placeholder="+221 XX XXX XX XX"></div>
+        </div>
+        <div class="fg">
+          <label>Type de Demande</label>
+          <select id="cf-type">
+            <option value="">Choisir le type</option>
+            <option>🚗 Achat de véhicule</option>
+            <option>🗓️ Location de véhicule</option>
+            <option>🛡️ Renouvellement assurance AXA</option>
+            <option>💬 Renseignement général</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label>Véhicule (optionnel)</label>
+          <select id="cf-vehicule">
+            <option value="">Sélectionner un véhicule</option>
+            <option>Mercedes-AMG GLE 53 — 64 000 000 FCFA</option>
+            <option>Range Rover Evoque — 47 000 000 FCFA</option>
+            <option>Toyota RAV4 2014 — 9 500 000 FCFA</option>
+            <option>Toyota RAV4 (location) — 42 000 FCFA/jour</option>
+            <option>Toyota 4Runner — 25 000 000 FCFA</option>
+            <option>Citroën C5 Aircross — 23 000 000 FCFA</option>
+            <option>Citroën Berlingo (location) — 30 000 FCFA/jour</option>
+            <option>Dacia Sandero Stepway — 5 800 000 FCFA</option>
+            <option>Toyota Yaris violette — 5 000 000 FCFA</option>
+            <option>Toyota Yaris (location) — 21 000-23 000 FCFA/jour</option>
+            <option>Toyota RAV4 2020 — 19 000 000 FCFA</option>
+            <option>Mazda CX-5 Full Option 2018 — 11 500 000 FCFA</option>
+            <option>Toyota Hilux 4×4 Double Cab 2020 — 17 000 000 FCFA</option>
+            <option>Mon propre véhicule (assurance AXA)</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label>Message</label>
+          <textarea id="cf-msg" rows="3" placeholder="Votre message, questions..."></textarea>
+        </div>
+        <button class="send-wa-btn" onclick="envoyerWA()">💬 Envoyer via WhatsApp</button>
+        <div class="wa-note">→ Vous serez redirigé vers WhatsApp · Numéro : 772984213</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AXA -->
+<section class="axa-sec" id="assurance">
+  <div class="axa-inner">
+    <div class="srl">
+      <div class="stag">Service Exclusif</div>
+      <h2 class="stitle">Assurance <span class="r">Expirée ?</span></h2>
+      <p class="ssub">Envoyez votre carte grise à Karim — renouvellement AXA géré entièrement pour vous sous 24h.</p>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-body"><h4>Votre assurance expire ou est expirée</h4><p>Vous constatez que votre couverture est terminée ou arrive à échéance.</p><span class="steptag">📅 Assurance expirée</span></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-body"><h4>Vous envoyez votre carte grise à Karim</h4><p>Par WhatsApp au 772984213 ou via le formulaire. Une simple photo suffit.</p><span class="steptag">📄 Photo ou scan accepté</span></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-body"><h4>Karim gère votre dossier AXA</h4><p>Toutes les démarches auprès d'AXA sont gérées entièrement à votre place.</p><span class="steptag">⚡ Traitement sous 24h</span></div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-body"><h4>Vous recevez votre attestation AXA</h4><p>Envoyée par WhatsApp ou email. Vous êtes immédiatement couvert !</p><span class="steptag">✅ Couverture immédiate</span></div></div>
+      </div>
+    </div>
+
+    <div class="srr" style="transition-delay:.2s">
+      <div class="upload-card" onclick="document.getElementById('cgFile').click()">
+        <input type="file" id="cgFile" accept="image/*,.pdf" style="display:none" onchange="fileChosen(this)">
+        <div class="upload-icon">📄</div>
+        <h3>Envoyer votre Carte Grise</h3>
+        <p>Cliquez ici pour joindre votre carte grise<br>(photo, scan — JPG, PNG ou PDF)</p>
+        <div class="upload-badge">JPG · PNG · PDF acceptés</div>
+      </div>
+      <div id="fileInfo" style="display:none;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.3);border-radius:10px;padding:11px 16px;margin-bottom:15px;color:#16a34a;font-size:14px;font-weight:600"></div>
+      <div class="axa-form">
+        <h4>📋 Vos Informations</h4>
+        <div class="frow2">
+          <div class="fg2"><label>Nom complet</label><input type="text" id="axa-nom" placeholder="Votre nom"></div>
+          <div class="fg2"><label>WhatsApp</label><input type="tel" id="axa-tel" placeholder="+221 77..."></div>
+        </div>
+        <div class="fg2"><label>Formule souhaitée</label>
+          <select id="axa-formule">
+            <option value="">Choisir une formule AXA</option>
+            <option>Tiers Simple — dès 19 000 FCFA/mois</option>
+            <option>Tiers Étendu — dès 39 000 FCFA/mois</option>
+            <option>Tous Risques — dès 58 000 FCFA/mois ⭐</option>
+            <option>Tous Risques + — dès 78 000 FCFA/mois</option>
+          </select>
+        </div>
+        <button class="submit-axa" onclick="envoyerAXA()">💬 Envoyer ma demande via WhatsApp</button>
+        <div style="text-align:center;font-size:11px;color:var(--grey);margin-top:8px">→ Message envoyé à Karim au 772984213</div>
+      </div>
+      <div class="plans-grid">
+        <div class="plan"><div class="plan-name">Tiers Simple</div><div class="plan-desc">Responsabilité civile</div><div class="plan-price">19 000 FCFA<small>/mois</small></div></div>
+        <div class="plan best"><div class="plan-name">Tous Risques</div><div class="plan-desc">Couverture maximale</div><div class="plan-price">58 000 FCFA<small>/mois</small></div><span class="plan-badge">⭐ Top</span></div>
+        <div class="plan"><div class="plan-name">Tiers Étendu</div><div class="plan-desc">+ Vol · Incendie</div><div class="plan-price">39 000 FCFA<small>/mois</small></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="rev-sec" id="avis">
+  <div class="wrap">
+    <div class="sr" style="text-align:center;max-width:500px;margin:0 auto"><div class="stag" style="justify-content:center">Témoignages</div><h2 class="stitle">Ce qu'ils disent <span class="r">de nous</span></h2></div>
+    <div class="rgrid">
+      <div class="rv sr" style="transition-delay:.1s"><div class="rv-stars">★★★★★</div><p class="rv-text">"Mon assurance avait expiré. J'ai envoyé ma carte grise à Karim par WhatsApp et le lendemain j'avais mon attestation AXA. Rapide, simple, efficace !"</p><div class="rv-author"><div class="av avr">K</div><div><div class="av-name">Karim Bensalem</div><div class="av-loc">Chauffeur — Dakar</div></div></div></div>
+      <div class="rv sr" style="transition-delay:.2s"><div class="rv-stars">★★★★★</div><p class="rv-text">"J'ai acheté mon RAV4 ici, très bien entretenu, prix honnête. Assurance AXA gérée sur place en même temps. Je recommande vivement Karim Automobile !"</p><div class="rv-author"><div class="av avb">M</div><div><div class="av-name">Moussa Diallo</div><div class="av-loc">Commerçant — Saint-Louis</div></div></div></div>
+      <div class="rv sr" style="transition-delay:.3s"><div class="rv-stars">★★★★★</div><p class="rv-text">"Location du Berlingo pour un déménagement, véhicule nickel, AXA incluse. Karim est professionnel et à l'écoute. Réponse immédiate sur WhatsApp. Merci !"</p><div class="rv-author"><div class="av avm">F</div><div><div class="av-name">Fatou Sy</div><div class="av-loc">Infirmière — Thiès</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-band">
+  <h2>PRÊT À NOUS FAIRE CONFIANCE ?</h2>
+  <p>Contactez Karim Automobile maintenant sur WhatsApp.</p>
+  <div class="cta-btns">
+    <button class="btn-wa-cta" onclick="window.open('https://wa.me/772984213?text=Bonjour Karim Automobile !','_blank')">💬 Écrire sur WhatsApp</button>
+    <button class="btnw" onclick="goto('fleet')">🚗 Voir les Véhicules</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft">
+    <div>
+      <a href="#" class="ft-logo">Karim <span>Automobile</span><small>Vente · Location · Assurance AXA</small></a>
+      <p class="ft-desc">Votre concessionnaire de confiance & partenaire AXA officiel depuis plus de 10 ans.</p>
+      <div class="ft-socs">
+        <a href="https://wa.me/772984213" target="_blank" class="ft-s">💬</a>
+        <a href="tel:+772984213" class="ft-s">📞</a>
+        <a href="#" class="ft-s">f</a>
+        <a href="#" class="ft-s">◎</a>
+      </div>
+    </div>
+    <div class="ft-col"><h4>Véhicules</h4><ul><li><a href="#">Toyota RAV4 & 4Runner</a></li><li><a href="#">Range Rover Evoque</a></li><li><a href="#">Mercedes-AMG GLE</a></li><li><a href="#">Citroën C5 Aircross</a></li><li><a href="#">Dacia Sandero</a></li><li><a href="#">Toyota Yaris</a></li></ul></div>
+    <div class="ft-col"><h4>Location</h4><ul><li><a href="#">Yaris — 21 000 FCFA/jour</a></li><li><a href="#">Berlingo — 30 000 FCFA/jour</a></li><li><a href="#">RAV4 — 42 000 FCFA/jour</a></li><li><a href="#">AXA incluse</a></li><li><a href="#">Livraison domicile</a></li></ul></div>
+    <div class="ft-col"><h4>Contact</h4><ul><li><a href="https://wa.me/772984213" target="_blank">💬 WhatsApp : 772984213</a></li><li><a href="tel:+772984213">📞 Appeler</a></li><li><a href="#">📄 Envoyer Carte Grise</a></li><li><a href="#">🛡️ Assurance AXA</a></li></ul></div>
+  </div>
+  <div class="ft-bot">
+    <span class="ft-copy">© 2024 Karim Automobile. Tous droits réservés.</span>
+    <div class="ft-axa">Partenaire Certifié <span class="ft-axalogo">AXA</span></div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
